@@ -1,0 +1,217 @@
+:root {
+  --white: #eee;
+  --white-2: #ffffff8f;
+
+  --font: "Plus Jakarta Sans", sans-serif;
+  --fs-name: clamp(2.25rem, 1vw + 1rem, 3.2rem);
+  --fs-number: clamp(6rem, 2vw + 2.5rem, 7rem);
+  --fs-desc: clamp(1.5rem, 1vw + .1rem, 1.85rem);
+
+  --card-shadow: 3rem 2rem 6rem #00000050;
+
+  --gradi-1: linear-gradient(-35deg, #191919 22.35%, #252934 94.26%);
+  --gradi-2: linear-gradient(-35deg, #e20097 22.35%, #990000 94.26%);
+  --gradi-3: linear-gradient(-35deg, #b4009c 17.01%, #8100b4 83.13%);
+  --gradi-4: linear-gradient(-35deg, #00114b, #003eb3 87.16%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* page title */
+.title {
+  margin: 4.3rem auto;
+  width: 100%;
+  max-width: 40rem;
+}
+
+.title h1 {
+  max-width: 20rem;
+  line-height: 150%;
+  font-size: 3rem;
+}
+
+.title span {
+  font-weight: 700;
+  font-size: 9rem;
+}
+
+.title img {
+  width: 20rem;
+  margin-left: 5rem;
+}
+
+/* cards container */
+.container {
+  display: grid;
+  align-items: end;
+  min-height: 45rem;
+  width: 100%;
+  row-gap: 12rem;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+}
+
+.card {
+  height: 45rem;
+  transition: all .5s ease;
+  position: relative;
+  color: var(--white);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-inline: 1.6rem;
+  cursor: pointer;
+}
+
+.card.active {
+  height: 50rem;
+  z-index: 9;
+  box-shadow: var(--card-shadow);
+}
+
+.card-1 {
+  background: var(--gradi-1);
+}
+
+.card-2 {
+  background: var(--gradi-2);
+}
+
+.card-3 {
+  background: var(--gradi-3);
+}
+
+.card-4 {
+  background: var(--gradi-4);
+}
+
+/* card img */
+.card .img {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30rem;
+  filter: drop-shadow(0 2rem 2rem #0000008f);
+  pointer-events: none;
+  user-select: none;
+  cursor: auto;
+  transition: all .5s;
+}
+
+.card.active .img {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  cursor: auto;
+  top: -25%;
+  left: 50%;
+  transform: rotate(15deg) translateX(-50%);
+  width: 30rem;
+  filter: drop-shadow(0 2rem 2rem #0000008f);
+  user-select: none;
+}
+
+/* card texts */
+.card .text {
+  min-height: 15rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+  user-select: none;
+}
+
+.name {
+  font-size: var(--fs-name);
+}
+
+.number {
+  font-size: var(--fs-number);
+  margin-block: 3rem;
+}
+
+.desc {
+  font-size: var(--fs-desc);
+  color: var(--white-2);
+}
+
+/* card icons */
+.card .icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3.2rem 2.4rem 3.2rem;
+}
+
+.card .icon,
+.heart {
+  font-size: 3.5rem;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.card .icon:hover {
+  scale: 1.35;
+}
+
+.card .heart {
+  width: 3.5rem;
+  fill: #ffffff01;
+}
+
+.card .heart:hover,
+.card .heart.toggled {
+  fill: #fff;
+}
+
+.card .arrow {
+  transform: rotate(180deg);
+}
+
+.card.card.active .arrow {
+  transform: rotate(0);
+  scale: 1.5;
+}
+
+@media (max-width: 760px) {
+  .container {
+    margin-top: 20rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    max-width: 100%;
+    display: grid;
+    place-content: center;
+  }
+
+  .title span {
+    font-size: 5rem;
+  }
+
+  .title img {
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
